@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+  <title>LUMIÈRE · Joyería Fina</title>
+  <!-- Google Fonts para un aspecto elegante y moderno -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <!-- Font Awesome para íconos (versión gratuita) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* Reset y estilos base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #faf8f6;
+      color: #2c2c2c;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Variables de color */
+    :root {
+      --gold: #c9a87c;
+      --gold-dark: #a8895e;
+      --dark: #1e1e1e;
+      --light-bg: #faf8f6;
+      --soft-gray: #e8e2dc;
+      --text-dark: #2c2c2c;
+      --text-light: #6f6f6f;
+      --white: #ffffff;
+      --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
+      --transition: all 0.3s ease;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Botones */
+    .btn {
+      display: inline-block;
+      background-color: var(--gold);
+      color: var(--dark);
+      font-weight: 500;
+      font-size: 0.85rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 14px 32px;
+      border: 1px solid var(--gold);
+      border-radius: 0;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background-color: transparent;
+      color: var(--gold-dark);
+      border-color: var(--gold-dark);
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      color: var(--gold-dark);
+      border: 1px solid var(--gold);
+    }
+
+    .btn-outline:hover {
+      background-color: var(--gold);
+      color: var(--dark);
+    }
+
+    /* Header / Navegación */
+    header {
+      position: sticky;
+      top: 0;
+      background-color: rgba(250, 248, 246, 0.95);
+      backdrop-filter: blur(8px);
+      z-index: 100;
+      border-bottom: 1px solid var(--soft-gray);
+    }
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 24px;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 600;
+      letter-spacing: 4px;
+      color: var(--dark);
+      text-transform: uppercase;
+    }
+
+    .logo span {
+      color: var(--gold);
+      font-weight: 300;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      font-size: 0.85rem;
+      font-weight: 400;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .nav-links a {
+      transition: var(--transition);
+      padding-bottom: 4px;
+      border-bottom: 1px solid transparent;
+    }
+
+    .nav-links a:hover {
+      border-bottom-color: var(--gold);
+      color: var(--gold-dark);
+    }
+
+    .nav-icons {
+      display: flex;
+      gap: 1.5rem;
+      font-size: 1.1rem;
+      color: var(--dark);
+    }
+
+    .nav-icons i {
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .nav-icons i:hover {
+      color: var(--gold);
+    }
+
+    /* Menú hamburguesa (oculto en escritorio) */
+    .hamburger {
+      display: none;
+      font-size: 1.6rem;
+      cursor: pointer;
+      color: var(--dark);
+    }
+
+    /* Hero section */
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 85vh;
+      background: linear-gradient(135deg, #f5f0eb 0%, #faf8f6 100%);
+      padding: 40px 24px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 20% 30%, rgba(201, 168, 124, 0.08) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      max-width: 750px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-subtitle {
+      font-size: 0.9rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+      margin-bottom: 1rem;
+      font-weight: 400;
+    }
+
+    .hero-title {
+      font-size: clamp(3rem, 8vw, 5.5rem);
+      font-weight: 500;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      color: var(--dark);
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--gold);
+      font-weight: 400;
+    }
+
+    .hero-text {
+      font-size: 1.1rem;
+      color: var(--text-light);
+      margin-bottom: 2.5rem;
+      max-width: 550px;
+      margin-left: auto;
+      margin-right: auto;
+      font-weight: 300;
+    }
+
+    /* Sección de categorías */
+    .section {
+      padding: 80px 0;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .section-header h2 {
+      font-size: 2.8rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-header p {
+      color: var(--text-light);
+      font-size: 0.95rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 24px;
+    }
+
+    .category-card {
+      position: relative;
+      border-radius: 0;
+      overflow: hidden;
+      aspect-ratio: 1 / 1.2;
+      background-color: var(--soft-gray);
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    .category-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.1);
+    }
+
+    .category-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .category-card:hover img {
+      transform: scale(1.04);
+    }
+
+    .category-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 28px 20px 24px;
+      background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, transparent 100%);
+      color: white;
+      text-align: center;
+    }
+
+    .category-overlay h3 {
+      font-size: 1.8rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+      color: white;
+    }
+
+    .category-overlay span {
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      opacity: 0.9;
+    }
+
+    /* Productos destacados */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 32px;
+    }
+
+    .product-card {
+      background: var(--white);
+      transition: var(--transition);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+      border: 1px solid #f0ebe6;
+    }
+
+    .product-card:hover {
+      box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.08);
+    }
+
+    .product-img {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 1 / 1;
+      background-color: #f5f1ec;
+    }
+
+    .product-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .product-card:hover .product-img img {
+      transform: scale(1.05);
+    }
+
+    .product-tag {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      background: var(--gold);
+      color: var(--dark);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 5px 12px;
+    }
+
+    .product-info {
+      padding: 22px 18px 24px;
+      text-align: center;
+    }
+
+    .product-info h3 {
+      font-size: 1.4rem;
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+
+    .product-category {
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-bottom: 10px;
+    }
+
+    .product-price {
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: var(--gold-dark);
+      font-family: 'Cormorant Garamond', serif;
+    }
+
+    .product-price del {
+      font-size: 0.9rem;
+      color: #b1a69b;
+      margin-left: 8px;
+      font-weight: 300;
+    }
+
+    /* Banner de inspiración */
+    .inspiration {
+      background-color: #f1ebe5;
+      padding: 80px 24px;
+      margin: 40px 0;
+    }
+
+    .inspiration-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 50px;
+      flex-wrap: wrap;
+    }
+
+    .inspiration-text {
+      flex: 1 1 300px;
+    }
+
+    .inspiration-text h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      font-weight: 500;
+    }
+
+    .inspiration-text p {
+      color: var(--text-light);
+      margin-bottom: 30px;
+      font-size: 1rem;
+    }
+
+    .inspiration-image {
+      flex: 1 1 300px;
+    }
+
+    .inspiration-image img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      box-shadow: var(--shadow);
+    }
+
+    /* Newsletter */
+    .newsletter {
+      background: var(--dark);
+      color: #e8e2dc;
+      padding: 70px 24px;
+      text-align: center;
+    }
+
+    .newsletter h2 {
+      font-size: 2.2rem;
+      color: white;
+      margin-bottom: 15px;
+      font-weight: 400;
+    }
+
+    .newsletter p {
+      color: #b1a69b;
+      max-width: 500px;
+      margin: 0 auto 30px;
+    }
+
+    .newsletter-form {
+      display: flex;
+      max-width: 500px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .newsletter-form input {
+      flex: 1 1 250px;
+      padding: 14px 18px;
+      border: 1px solid #3a3a3a;
+      background: transparent;
+      color: white;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.9rem;
+      outline: none;
+    }
+
+    .newsletter-form input::placeholder {
+      color: #8a8a8a;
+    }
+
+    .newsletter-form button {
+      background: var(--gold);
+      border: none;
+      color: var(--dark);
+      font-weight: 600;
+      padding: 14px 32px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .newsletter-form button:hover {
+      background: #b89462;
+    }
+
+    /* Footer */
+    footer {
+      background: #f5f0eb;
+      padding: 60px 24px 30px;
+      font-size: 0.9rem;
+    }
+
+    .footer-grid {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 40px;
+      margin-bottom: 50px;
+    }
+
+    .footer-col h4 {
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--dark);
+    }
+
+    .footer-col ul li {
+      margin-bottom: 12px;
+    }
+
+    .footer-col a {
+      color: var(--text-light);
+      transition: var(--transition);
+      font-size: 0.9rem;
+    }
+
+    .footer-col a:hover {
+      color: var(--gold-dark);
+      padding-left: 4px;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 16px;
+      margin-top: 15px;
+    }
+
+    .footer-social a {
+      font-size: 1.2rem;
+      color: var(--dark);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 30px;
+      border-top: 1px solid #ddd6cf;
+      color: var(--text-light);
+      font-size: 0.8rem;
+      letter-spacing: 0.5px;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero-title {
+        font-size: 3.5rem;
+      }
+      .section-header h2 {
+        font-size: 2.4rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 14px 20px;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: rgba(250, 248, 246, 0.98);
+        backdrop-filter: blur(12px);
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+        padding: 20px 0;
+        border-bottom: 1px solid var(--soft-gray);
+        box-shadow: 0 20px 20px -10px rgba(0,0,0,0.05);
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .nav-links li {
+        width: 100%;
+        text-align: center;
+      }
+
+      .nav-links a {
+        display: block;
+        padding: 14px 0;
+        width: 100%;
+      }
+
+      .hamburger {
+        display: block;
+      }
+
+      .nav-icons {
+        display: none;
+      }
+
+      /* Mostrar iconos de carrito en menú móvil? los ocultamos, pero podemos poner hamburguesa */
+      .nav-icons-mobile {
+        display: flex;
+        gap: 20px;
+        margin-top: 10px;
+      }
+
+      .hero {
+        min-height: 70vh;
+      }
+
+      .hero-title {
+        font-size: 2.8rem;
+      }
+
+      .inspiration-inner {
+        gap: 30px;
+      }
+
+      .inspiration-image img {
+        height: 300px;
+      }
+
+      .section {
+        padding: 60px 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .logo {
+        font-size: 1.6rem;
+        letter-spacing: 2px;
+      }
+
+      .hero-title {
+        font-size: 2.2rem;
+      }
+
+      .hero-text {
+        font-size: 1rem;
+      }
+
+      .btn {
+        padding: 12px 24px;
+        font-size: 0.75rem;
+      }
+
+      .section-header h2 {
+        font-size: 2rem;
+      }
+
+      .categories-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .products-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .newsletter-form {
+        flex-direction: column;
+      }
+
+      .newsletter-form button {
+        width: 100%;
+      }
+
+      .inspiration-text h2 {
+        font-size: 2rem;
+      }
+    }
+
+    /* Pequeño ajuste para el menú hamburguesa activo */
+    .nav-links.active {
+      display: flex;
+    }
+
+    /* Elementos ocultos en escritorio */
+    .mobile-only {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .mobile-only {
+        display: flex;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="navbar">
+      <div class="logo">LUMI<span>ÈRE</span></div>
+      
+      <nav>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#">Inicio</a></li>
+          <li><a href="#">Colecciones</a></li>
+          <li><a href="#">Anillos</a></li>
+          <li><a href="#">Collares</a></li>
+          <li><a href="#">Aretes</a></li>
+          <li><a href="#">Contacto</a></li>
+          <!-- Iconos para móvil dentro del menú -->
+          <li class="mobile-only" style="margin-top: 10px; justify-content: center; gap: 30px;">
+            <a href="#"><i class="far fa-heart"></i></a>
+            <a href="#"><i class="far fa-user"></i></a>
+            <a href="#"><i class="fas fa-shopping-bag"></i></a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="nav-icons">
+        <i class="far fa-heart"></i>
+        <i class="far fa-user"></i>
+        <i class="fas fa-shopping-bag"></i>
+      </div>
+
+      <div class="hamburger" id="hamburger">
+        <i class="fas fa-bars"></i>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-content">
+        <div class="hero-subtitle">Elegancia atemporal</div>
+        <h1 class="hero-title">Joyas que cuentan <em>tu historia</em></h1>
+        <p class="hero-text">Piezas únicas, elaboradas a mano con metales preciosos y gemas seleccionadas. Brilla con luz propia.</p>
+        <a href="#" class="btn">Explorar colección</a>
+      </div>
+    </section>
+
+    <!-- Categorías -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Compra por categoría</h2>
+          <p>Encuentra tu estilo</p>
+        </div>
+        <div class="categories-grid">
+          <a href="#" class="category-card">
+            <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=600&auto=format&fit=crop&q=80" alt="Anillos de compromiso">
+            <div class="category-overlay">
+              <h3>Anillos</h3>
+              <span>Ver colección</span>
+            </div>
+          </a>
+          <a href="#" class="category-card">
+            <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=600&auto=format&fit=crop&q=80" alt="Collares elegantes">
+            <div class="category-overlay">
+              <h3>Collares</h3>
+              <span>Ver colección</span>
+            </div>
+          </a>
+          <a href="#" class="category-card">
+            <img src="https://images.unsplash.com/photo-1635767798638-3e25273a8236?w=600&auto=format&fit=crop&q=80" alt="Aretes finos">
+            <div class="category-overlay">
+              <h3>Aretes</h3>
+              <span>Ver colección</span>
+            </div>
+          </a>
+          <a href="#" class="category-card">
+            <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=600&auto=format&fit=crop&q=80" alt="Pulseras y brazaletes">
+            <div class="category-overlay">
+              <h3>Pulseras</h3>
+              <span>Ver colección</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Productos destacados -->
+    <section class="section" style="background-color: #ffffff;">
+      <div class="container">
+        <div class="section-header">
+          <h2>Piezas destacadas</h2>
+          <p>Seleccionadas para ti</p>
+        </div>
+        <div class="products-grid">
+          <!-- Producto 1 -->
+          <div class="product-card">
+            <div class="product-img">
+              <img src="https://images.unsplash.com/photo-1603561591411-07134e71a2a9?w=600&auto=format&fit=crop&q=80" alt="Anillo solitario oro">
+              <span class="product-tag">Nuevo</span>
+            </div>
+            <div class="product-info">
+              <h3>Anillo Aurora</h3>
+              <div class="product-category">Oro 18k · Diamante</div>
+              <div class="product-price">$1,250 <del>$1,490</del></div>
+            </div>
+          </div>
+          <!-- Producto 2 -->
+          <div class="product-card">
+            <div class="product-img">
+              <img src="https://images.unsplash.com/photo-1599643477877-530eb83abc8e?w=600&auto=format&fit=crop&q=80" alt="Collar de perlas">
+              <span class="product-tag">Bestseller</span>
+            </div>
+            <div class="product-info">
+              <h3>Collar Perla Eterna</h3>
+              <div class="product-category">Plata 925 · Perla</div>
+              <div class="product-price">$890</div>
+            </div>
+          </div>
+          <!-- Producto 3 -->
+          <div class="product-card">
+            <div class="product-img">
+              <img src="https://images.unsplash.com/photo-1635767798638-3e25273a8236?w=600&auto=format&fit=crop&q=80" alt="Aretes largos de oro">
+            </div>
+            <div class="product-info">
+              <h3>Aretes Gota de Luz</h3>
+              <div class="product-category">Oro blanco · Topacio</div>
+              <div class="product-price">$670</div>
+            </div>
+          </div>
+          <!-- Producto 4 -->
+          <div class="product-card">
+            <div class="product-img">
+              <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=600&auto=format&fit=crop&q=80" alt="Pulsera de eslabones">
+              <span class="product-tag">Edición limitada</span>
+            </div>
+            <div class="product-info">
+              <h3>Pulsera Serpiente</h3>
+              <div class="product-category">Oro rosa 14k</div>
+              <div class="product-price">$1,050</div>
+            </div>
+          </div>
+        </div>
+        <div style="text-align: center; margin-top: 50px;">
+          <a href="#" class="btn btn-outline">Ver todos los productos</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Banner de inspiración -->
+    <section class="inspiration">
+      <div class="inspiration-inner">
+        <div class="inspiration-text">
+          <h2>El arte de regalar</h2>
+          <p>Una joya es mucho más que un accesorio: es un recuerdo, una promesa, un símbolo. Descubre nuestra guía de regalos y encuentra la pieza perfecta para esa persona especial.</p>
+          <a href="#" class="btn">Descubrir guía</a>
+        </div>
+        <div class="inspiration-image">
+          <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=800&auto=format&fit=crop&q=80" alt="Mujer con joyas elegant">
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+      <h2>Únete al círculo LUMIÈRE</h2>
+      <p>Recibe novedades, ofertas exclusivas y consejos de estilo directamente en tu correo.</p>
+      <form class="newsletter-form" action="#" method="post">
+        <input type="email" placeholder="Tu correo electrónico" required>
+        <button type="submit">Suscribirme</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>LUMIÈRE</h4>
+        <ul>
+          <li><a href="#">Sobre nosotros</a></li>
+          <li><a href="#">Sostenibilidad</a></li>
+          <li><a href="#">Artesanía</a></li>
+          <li><a href="#">Tiendas</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Ayuda</h4>
+        <ul>
+          <li><a href="#">Envíos y devoluciones</a></li>
+          <li><a href="#">Guía de tallas</a></li>
+          <li><a href="#">Cuidado de joyas</a></li>
+          <li><a href="#">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="#">Términos y condiciones</a></li>
+          <li><a href="#">Política de privacidad</a></li>
+          <li><a href="#">Cookies</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Síguenos</h4>
+        <div class="footer-social">
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-pinterest-p"></i></a>
+          <a href="#"><i class="fab fa-tiktok"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2025 LUMIÈRE Joyería Fina. Todas las imágenes son ilustrativas. Hecho con elegancia.
+    </div>
+  </footer>
+
+  <!-- JavaScript para el menú hamburguesa -->
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+
+    // Cierra el menú al hacer clic en un enlace (para móviles)
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+      });
+    });
+  </script>
+</body>
+</html>
